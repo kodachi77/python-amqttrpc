@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+
+    broker:
+        build:
+          context: ../
+          dockerfile: tests/Dockerfile.broker
+
+    tox:
+        build:
+          context: ../
+          dockerfile: tests/Dockerfile.tox
+        depends_on:
+          - broker
+        environment:
+          - CLIENT_UID=tox
+          - MQTT_URL=mqtt://broker:1883

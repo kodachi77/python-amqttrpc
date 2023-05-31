@@ -1,0 +1,4 @@
+FROM eclipse-mosquitto:latest
+
+COPY ./tests/mosquitto.conf /mosquitto/config
+CMD ["mosquitto", "-v", "-c", "/mosquitto/config/mosquitto.conf"]
